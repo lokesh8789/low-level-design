@@ -1,0 +1,45 @@
+LogLevel (enum)
+    - ERROR(5)
+    - WARN(4)
+    - INFO(3)
+    - DEBUG(2)
+    - TRACE(1)
+    - int priority
+
+LogMessage (class)
+    - String message
+    - LocalDateTime timestamp
+    - LogLevel level
+
+LogFormatter (interface)
+    - String format(LogMessage message)
+
+DefaultFormatter (class) implements LogFormatter
+JsonFormatter (class) implements LogFormatter
+
+LogAppender (abstract class)
+    - LogFormatter logFormatter
+    - append(LogMessage message)
+    - abstract write(String message)
+
+ConsoleAppender (class) extends LogAppender
+
+FileAppender (class) extends LogAppender
+
+Logger (abstract class)
+    - List<LogAppender> logAppenders
+    - LogLevel logLevel
+    - isEnabled(LogLevel level)
+    - log(LogLevel level, String message)
+    - abstract doLog(LogMessage logMessage)
+    - error(String message)
+    - warn(String message)
+    - info(String message)
+    - debug(String message)
+    - trace(String message)
+
+SyncLogger (class) extends Logger
+
+AsyncLogger (class) extends Logger
+    - BlockingQueue<LogMessage>
+    - start()
