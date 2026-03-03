@@ -1,0 +1,58 @@
+Design a Tic-tac-toe game that can be played between two players.
+🎯 Functional Requirements
+The game should support:
+    Two players
+    A board of size N x N (not just 3x3)
+Each player:
+    Has a name
+    Has a symbol (e.g., X or O)
+Players take turns placing their symbol on the board.
+A move is valid only if:
+    The position is inside the board
+    The cell is empty
+The game should:
+    Detect a winner
+    Detect a draw
+    Prevent moves after the game ends
+A player wins if:
+    They fill an entire row, OR
+    An entire column, OR
+    One of the diagonals
+
+🧱 Non-Functional Requirements
+The design should follow SOLID principles.
+The system should be easily extendable:
+    Support for different board sizes
+    Add AI player in future
+    Support multiple winning strategies
+Clean separation of responsibilities.
+Avoid putting all logic in one class.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PlayerType (enum)
+    - X, O
+
+Player (abstract class)
+    - String name
+    - PlayerType type
+
+Board (class)
+    - ArrayDeque<Player> playerQueue
+    - board[n][n]
